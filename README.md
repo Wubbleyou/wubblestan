@@ -55,3 +55,36 @@ This rule scans all controller methods to make sure no business logic is present
 ### MaxLengthController
 
 This rule scans all controller methods to make sure none of them exceed a limit of 20 lines in length.
+
+### Example phpstan.neon config
+
+**_Note: level should be set somewhere between 1 & 10._**
+[Read about levels here](https://phpstan.org/user-guide/rule-levels)
+
+```
+includes:
+    - vendor/larastan/larastan/extension.neon
+    - vendor/nesbot/carbon/extension.neon
+
+parameters:
+    paths:
+        - app/
+    level: 0-10
+
+services:
+    - class: Wubbleyou\Wubblestan\Rules\BusinessLogicInController
+      tags:
+        - phpstan.rules.rule
+    - class: Wubbleyou\Wubblestan\Rules\ModelsInController
+      tags:
+        - phpstan.rules.rule
+    - class: Wubbleyou\Wubblestan\Rules\MaxLengthController
+      tags:
+        - phpstan.rules.rule
+    - class: Wubbleyou\Wubblestan\Rules\StandardRequestInController
+      tags:
+        - phpstan.rules.rule
+    - class: Wubbleyou\Wubblestan\Rules\AuthorisationInController
+      tags:
+        - phpstan.rules.rule
+```
