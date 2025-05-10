@@ -38,7 +38,7 @@ Any method using `Illuminate\Http\Request` **will fail**.
 
 ### ModelsInController
 
-This rule scans all controller methods to make sure you're not using/accessing models directly within a controller. For an example the following is forbidden:
+This rule scans all controller methods to make sure you're not using model classes directly within a controller. For an example the following is forbidden:
 
 -   `$user = User::find(2);`
 -   `User::create([...])`
