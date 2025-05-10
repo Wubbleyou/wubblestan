@@ -25,9 +25,7 @@ services:
 
 #### Whitelisting
 
-We can just use PHPStans built-in `Ignore Errors` functionality to whitelist specific controllers/methods.
-
-[Read about it here](https://phpstan.org/user-guide/ignoring-errors)
+We can just use [PHPStans ignoring errors](https://phpstan.org/user-guide/ignoring-errors) functionality to whitelist specific controllers/methods.
 
 ### AuthorisationInController
 
