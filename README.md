@@ -5,6 +5,7 @@ A simple set of prebuilt rules for PHPStan/Larastan.
 ### Setup
 
 Simply install this as you would any other composer package:
+
 `composer require --dev "wubbleyou/wubblestan:dev"`
 
 ##### Note: this isn't actually published to composer yet
@@ -24,7 +25,9 @@ services:
 
 #### Whitelisting
 
-To do (sorry)
+We can just use PHPStans built-in `Ignore Errors` functionality to whitelist specific controllers/methods.
+
+[Read about it here](https://phpstan.org/user-guide/ignoring-errors)
 
 ### AuthorisationInController
 
@@ -58,7 +61,8 @@ This rule scans all controller methods to make sure none of them exceed a limit 
 
 ### Example phpstan.neon config
 
-**_Note: level should be set somewhere between 1 & 10._**
+**_Note: level should be set somewhere between 1 and 10._**
+
 [Read about levels here](https://phpstan.org/user-guide/rule-levels)
 
 ```
