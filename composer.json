@@ -1,0 +1,19 @@
+{
+    "name": "wubbleyou/wubblestan",
+    "description": "A set of prebuilt rules for Larastan/PHPStan",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Wubbleyou\\Wubblestan\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Wubbleyou",
+            "email": "hello@wubbleyou.co.uk"
+        }
+    ],
+    "require-dev": {
+        "larastan/larastan": "^3.0"
+    }
+}
