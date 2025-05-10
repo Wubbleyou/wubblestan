@@ -38,18 +38,15 @@ class AuthorisationInController implements Rule
         if ($this->isController($className)) {
             foreach ($node->getMethods() as $method) {
                 $authorisation = false;
-
                 $statements = $method->getStmts();
-                if ($statements === null) {
-                    continue;
-                }
                 
                 foreach ($statements as $statement) {
-                    if(get_class($statement) === Stmt\Expression::class) {
-                        if(get_class($statement->expr) === MethodCall::class) {
-                            if($statement->expr->name && $statement->expr->name->name === 'authorize') {
-                                $authorisation = true;
-                            }
+                    if(
+                        get_class($statement) === Stmt\Expression::class
+                        && get_class($statement->expr) === MethodCall::class
+                    ) {
+                        if($statement->expr->name?->name === 'authorize') {
+                            $authorisation = true;
                         }
                     }
                 }

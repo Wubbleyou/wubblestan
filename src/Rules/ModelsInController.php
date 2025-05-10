@@ -38,23 +38,21 @@ class ModelsInController implements Rule
         if ($this->isController($className)) {
             foreach ($node->getMethods() as $method) {
                 $statements = $method->getStmts();
-                if ($statements === null) {
-                    continue;
-                }
                 
                 foreach ($statements as $statement) {
-                    if(get_class($statement) === Stmt\Expression::class) {
-                        if($className = $this->getModelFromExpression($statement)) {
-                            return [
-                                RuleErrorBuilder::message(sprintf(
-                                    'Method "%s::%s" calls model(s) directly - this should be in services.',
-                                    $className,
-                                    (string) $method->name,
-                                ))
-                                ->identifier('controller.usesModels')
-                                ->build(),
-                            ];
-                        }
+                    if(
+                        get_class($statement) === Stmt\Expression::class // Is an Expression
+                        && $className = $this->getModelFromExpression($statement) // Expression is a model
+                    ) {
+                        return [
+                            RuleErrorBuilder::message(sprintf(
+                                'Method "%s::%s" calls models directly - this should be in services.',
+                                $className,
+                                (string) $method->name,
+                            ))
+                            ->identifier('controller.usesModels')
+                            ->build(),
+                        ];
                     }
                 }
             }

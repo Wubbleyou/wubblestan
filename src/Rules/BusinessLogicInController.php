@@ -35,9 +35,6 @@ class BusinessLogicInController implements Rule
         if ($this->isController($className)) {
             foreach ($node->getMethods() as $method) {
                 $statements = $method->getStmts();
-                if ($statements === null) {
-                    continue;
-                }
                 
                 foreach ($statements as $statement) {
                     if ($this->isStatementWithBusinessLogic($statement)) {
