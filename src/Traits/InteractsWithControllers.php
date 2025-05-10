@@ -9,6 +9,6 @@ trait InteractsWithControllers {
      */
     private function isController(string $class): bool
     {
-        return str_starts_with($class, 'App\Http\Controllers\Test');
+        return str_starts_with($class, 'App\Http') && str_ends_with($class, 'Controller');
     }
 }

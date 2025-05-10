@@ -39,6 +39,10 @@ class AuthorisationInController implements Rule
             foreach ($node->getMethods() as $method) {
                 $authorisation = false;
                 $statements = $method->getStmts();
+
+                if($method->name->name === '__construct') {
+                    continue;
+                }
                 
                 foreach ($statements as $statement) {
                     if(
