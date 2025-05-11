@@ -6,11 +6,7 @@ A simple set of prebuilt rules for PHPStan/Larastan.
 
 Simply install this as you would any other composer package:
 
-`composer require --dev "wubbleyou/wubblestan:dev"`
-
-##### Note: this isn't actually published to composer yet
-
-For now check the [Composer Docs](https://getcomposer.org/doc/05-repositories.md#using-private-repositories) for installing from this git repo instead.
+`composer require --dev "wubbleyou/wubblestan"`
 
 #### Neon Config
 
