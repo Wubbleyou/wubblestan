@@ -1,7 +1,8 @@
 {
     "name": "wubbleyou/wubblestan",
     "description": "A set of prebuilt rules for Larastan/PHPStan",
-    "type": "library",
+    "type": "phpstan-extension",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Wubbleyou\\Wubblestan\\": "src/"
