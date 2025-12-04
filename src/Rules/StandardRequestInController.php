@@ -35,16 +35,18 @@ class StandardRequestInController implements Rule
         if ($this->isController($className)) {
             foreach ($node->getMethods() as $method) {
                 foreach($method->getParams() as $param) {
-                    if($param->type && $this->isStandardRequest($param->type?->name)) {
-                        return [
-                            RuleErrorBuilder::message(sprintf(
-                                'Method "%s::%s" uses the standard Laravel request class - each request should be handled in a dedicated FormRequest class',
-                                $className,
-                                (string) $method->name,
-                            ))
-                            ->identifier('controller.standardRequestClass')
-                            ->build(),
-                        ];
+                    if ($param->type instanceof \PhpParser\Node\Identifier || $param->type instanceof \PhpParser\Node\Name) {
+                        if ($this->isStandardRequest((string) $param->type)) {
+                            return [
+                                RuleErrorBuilder::message(sprintf(
+                                    'Method "%s::%s" uses the standard Laravel request class - each request should be handled in a dedicated FormRequest class',
+                                    $className,
+                                    (string) $method->name,
+                                ))
+                                ->identifier('controller.standardRequestClass')
+                                ->build(),
+                            ];
+                        }
                     }
                 }
             }
